@@ -35,6 +35,12 @@ city = sample(cities, 1000000, replace = TRUE, prob = c(0.42, 0.2, 0.16, 0.13, 0
 devices = c("PC", "Mobile", "Tablet", "SmartTV")
 device = sample(devices, 1000000, replace = TRUE, prob = c(0.35, 0.6, 0.04, 0.01))
 
+# Time
+df_cut = 
+  df_cut %>%
+  mutate(time = as_datetime(time))
+
+
 # Dataset
 
 dataset = data.table(
