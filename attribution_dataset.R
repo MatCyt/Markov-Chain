@@ -6,18 +6,13 @@ library(data.table)
 library(lubridate)
 library(dbplyr)
 
-# Cookie
-# Time
-# Interaction
-# Channel
-# Type of message
-# Value
-# Type
-# Device
+# Read the dataset ----
 
 df.initial = fread("C:\\Users\\mateu\\Desktop\\MarketingAttribution\\sample.dataset.main.csv")
 
 df.cut = df.initial[, c("cookie", "time", "event", "creative_name", "deviceType_name", "country_name", "conversion")]
+
+## DATA PREP: Cookie, Country, City, Device, Time ----
 
 # Cookie
 df.cut$cookie2 = casefold(df.cut$cookie, upper = TRUE)
@@ -27,7 +22,7 @@ df.cut$cookie3 = substr(df.cut$cookie2, 4, 28)
 
 df.cut = df.cut[, -c("cookie", "cookie2")]
 
-# Country & City & Devide
+# Country & City & Device
 country = "Germany"
 
 cities = c("Berlin", "Hamburg", "Munich", "Cologne", "Frankfurt")
@@ -46,40 +41,27 @@ df.cut2 =
          day2 = as.Date(time2)) %>%
   select(-time, -date) 
 
-# Cut rows
+# Cut rows ----
 df.cut3 = df.cut2[-sample(1:nrow(df.cut2), 750792), ]
 
-str(df.cut3)
 
-
-
-# Events
-table(df.cut3$new_event)
-
+# Events & Conversions ----
 df.cut3$new_event = sample(c("impression", "conversion"), 1000000, replace = TRUE, prob = c(0.98, 0.02))
-
-str(df.cut3)
 
 # Conversions
 df.cut3$new_conversion = 0
 df.cut3$new_conversion[df.cut3$new_event == "conversion"] = 1
   
-table(df.cut3$new_conversion)
-
-
-
-# Conversion Value
+# Conversion Value ----
 
 prices <- seq(from = 4, to = 8.5, by = 0.5)
-prices
+df.prices <- sample(prices, 19653, replace = TRUE,
+                    prob = c(0.05, 0.05, 0.1, 0.1, 0.2, 0.2, 0.1, 0.1, 0.05, 0.05))
 
 df.cut3$conversion_value = 0
 df.cut3$conversion_value[df.cut3$new_conversion == 1] = df.prices
 
-df.prices <- sample(prices, 19653, replace = TRUE,
-                    prob = c(0.05, 0.05, 0.1, 0.1, 0.2, 0.2, 0.1, 0.1, 0.05, 0.05))
-
-# Channels
+# Channels ----
 df.cut3 %>%
   group_by(channel) %>%
   summarise(sum(new_conversion))
@@ -99,14 +81,7 @@ df.cut3 =
          channel = replace(channel, creative_name == "Interia_rectangle", "Paid Search"))
 
 
-
-table(df.cut3$channel)
-
-table(df.cut3$creative_name)
-
-# Dataset
-
-str(df.cut3)
+# Final Dataset ----
 
 final_data = 
   df.cut3 %>%
@@ -115,7 +90,5 @@ final_data =
 
 colnames(final_data) = c("cookie", "time", "interaction", "conversion", "conversion_value", "channel", "device_type", "country", "city")
 
-str(final_data)
-
-# Explore the dataset
-
+# Save the file
+write.csv2(final_data, file = "attribution_markov_dataset.csv")
