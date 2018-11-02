@@ -14,17 +14,17 @@ library(lubridate)
 # Type
 # Device
 
-df_initial = fread("C:\\Users\\mateu\\Desktop\\MarketingAttribution\\sample_dataset_main.csv")
+df.initial = fread("C:\\Users\\mateu\\Desktop\\MarketingAttribution\\sample.dataset.main.csv")
 
-df_cut = df[, c("cookie", "time", "event", "creative_name", "deviceType_name", "country_name", "conversion")]
+df.cut = df.initial[, c("cookie", "time", "event", "creative_name", "deviceType_name", "country_name", "conversion")]
 
 # Cookie
-df_cut$cookie2 = casefold(df_cut$cookie, upper = TRUE)
-df_cut$cookie2 = chartr("1234567890", "jknofghlmi", df_cut$cookie2)
-df_cut$cookie2 = chartr("glmj", "3790", df_cut$cookie2)
-df_cut$cookie3 = substr(df_cut$cookie2, 4, 28)
+df.cut$cookie2 = casefold(df.cut$cookie, upper = TRUE)
+df.cut$cookie2 = chartr("1234567890", "jknofghlmi", df.cut$cookie2)
+df.cut$cookie2 = chartr("glmj", "3790", df.cut$cookie2)
+df.cut$cookie3 = substr(df.cut$cookie2, 4, 28)
 
-df_cut = df_cut[, -c("cookie", "cookie2")]
+df.cut = df.cut[, -c("cookie", "cookie2")]
 
 # Country & City & Devide
 country = "Germany"
@@ -36,10 +36,26 @@ devices = c("PC", "Mobile", "Tablet", "SmartTV")
 device = sample(devices, 1000000, replace = TRUE, prob = c(0.35, 0.6, 0.04, 0.01))
 
 # Time
-df_cut = 
-  df_cut %>%
-  mutate(time = as_datetime(time))
+df.cut2 = 
+  df.cut %>%
+  mutate(time = as_datetime(time),
+         date = as.Date(time)) %>%
+  filter(date <= "2014-12-31") %>%
+  mutate(time2 = time + years(3) + months(7),
+         day2 = as.Date(time2)) %>%
+  select(-time, -date) 
 
+# Cut rows
+df.cut3 = df.cut2[-sample(1:nrow(df.cut2), 750792), ]
+
+str(df.cut3)
+
+
+
+# Events
+table(df.cut3$event3)
+
+df.cut3$event3 = sample(c("Impression", "Conversion"), 1000000, replace = TRUE, prob = c(0.98, 0.02))
 
 # Dataset
 
