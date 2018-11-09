@@ -1,9 +1,13 @@
+
 ### Load Libraries ----
+
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(data.table, dplyr, ChannelAttribution, ggplot2)
 
 
 ### Load Datasets ----
-
-
+campaign_data = fread()
+campaign_budget = fread()
 
 ### Prepare the files - Split Paths ----
 
