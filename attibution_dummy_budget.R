@@ -8,6 +8,9 @@ library(data.table)
 # Load the attribution dataset
 df.budget1 = fread("C:\\Users\\mateu\\Desktop\\MarketingAttribution\\attribution_markov_dataset.csv", dec = ",")
 
+# work laptop
+df.budget1 = fread("C:\\Users\\mateusz.cytrowski\\Desktop\\Github\\attribution_markov_dataset.csv", dec = ",")
+
 # Troubles with loading the file - decimals " , " 
 
 # Prep ----
@@ -46,5 +49,10 @@ final_budget
 
 # Save the files
 
+# Home
 write.csv2(df.budget3, file = "attribution_budget_daily.csv")
 write.csv2(final_budget, file = "attribution_budget_total.csv")
+
+# Work
+write.csv2(df.budget3, file = "C:\\Users\\mateusz.cytrowski\\Desktop\\Github\\attribution_budget_daily.csv")
+write.csv2(final_budget, file = "C:\\Users\\mateusz.cytrowski\\Desktop\\Github\\attribution_budget_total.csv")

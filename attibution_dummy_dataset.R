@@ -10,6 +10,9 @@ library(dplyr)
 
 df.initial = fread("C:\\Users\\mateu\\Desktop\\MarketingAttribution\\sample_dataset_main.csv")
 
+# Work laptop
+df.initial = fread("C:\\Users\\mateusz.cytrowski\\Desktop\\MediaProject\\Datasets\\sample_dataset_main.csv")
+
 df.cut = df.initial[, c("cookie", "time", "event", "creative_name", "deviceType_name", "country_name", "conversion")]
 
 ## DATA PREP: Cookie, Country, City, Device, Time ----
@@ -93,4 +96,11 @@ colnames(final_data) = c("cookie", "time", "interaction", "conversion", "convers
 str(final_data)
 
 # Save the file
-write.csv2(final_data, file = "attribution_markov_dataset.csv")
+
+# Home laptop
+write.csv2(final_data, file = "C:\\Users\\mateu\\Desktop\\MarketingAttribution\\attribution_markov_dataset.csv")
+
+# Work laptop
+write.csv2(final_data, file = "C:\\Users\\mateusz.cytrowski\\Desktop\\Github\\attribution_markov_dataset.csv")
+
+
