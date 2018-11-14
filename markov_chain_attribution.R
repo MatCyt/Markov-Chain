@@ -64,5 +64,6 @@ campaign_attribution =
          roas = chanel_weight / cost_weight,
          OptimalBudget = total_cost * roas)
 
+# Change the name of markov results column
+names(campaign_attribution)[names(campaign_attribution) == "total_conversions"] = "markov_result"
 
-#### MultiChannel and one channel issue
