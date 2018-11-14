@@ -48,9 +48,9 @@ final_budget
 # Save the files
 
 # Home
-write.csv2(df.budget3, file = "attribution_budget_daily.csv")
-write.csv2(final_budget, file = "attribution_budget_total.csv")
+write.csv2(df.budget3, file = "C:/Users/matcyt/Desktop/MarketingAttribution/attribution_budget_daily.csv")
+write.csv2(final_budget, file = "C:/Users/matcyt/Desktop/MarketingAttribution/attribution_budget_total.csv")
 
 # Work
-write.csv2(df.budget3, file = "C:\\Users\\mateusz.cytrowski\\Desktop\\Github\\attribution_budget_daily.csv")
-write.csv2(final_budget, file = "C:\\Users\\mateusz.cytrowski\\Desktop\\Github\\attribution_budget_total.csv")
+write.csv2(df.budget3, file = "C:/Users/matcyt/Desktop/MarketingAttribution/attribution_budget_daily.csv")
+write.csv2(final_budget, file = "C:/Users/matcyt/Desktop/MarketingAttribution/attribution_budget_total.csv")
