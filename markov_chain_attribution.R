@@ -62,7 +62,7 @@ campaign_attribution =
   mutate(chanel_weight = (total_conversions / sum(total_conversions)),
          cost_weight = (total_cost / sum(total_cost)),
          roas = chanel_weight / cost_weight,
-         OptimalBudget = total_cost * roas)
+         optimal_budget = total_cost * roas)
 
 # Change the name of markov results column
 names(campaign_attribution)[names(campaign_attribution) == "total_conversions"] = "markov_result"
