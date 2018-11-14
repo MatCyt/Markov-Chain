@@ -67,3 +67,4 @@ campaign_attribution =
 # Change the name of markov results column
 names(campaign_attribution)[names(campaign_attribution) == "total_conversions"] = "markov_result"
 
+

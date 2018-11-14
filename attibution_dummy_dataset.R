@@ -13,8 +13,6 @@ df.initial = fread("C:\\Users\\matcyt\\Desktop\\MarketingAttribution\\sample_dat
 # Work laptop
 df.initial = fread("C:\\Users\\mateusz.cytrowski\\Desktop\\MediaProject\\Datasets\\sample_dataset_main.csv")
 
-
-
 # Cut unnecessary columns
 df.cut = df.initial[, c("cookie", "time", "event", "creative_name", "deviceType_name", "country_name", "conversion")]
 
@@ -66,14 +64,21 @@ df.cut3$conversion_value[df.cut3$new_conversion == 1] = df.prices
 
 # Channels ----
 df.cut3 %>%
-  group_by(creative_name) %>%
+  group_by(channel) %>%
   summarise(sum(new_conversion))
 
 df.cut3$channel = 0
 
+# Amnet_DTH is too big as a creative - I will break it in half and replace 50% with FB and 50% with Instagram
+amnet = c("Amnet_DTH_all_creatives1", "Amnet_DTH_all_creatives2")
+nrow(df.cut3[df.cut3$creative_name == "Amnet_DTH_all_creatives", ])
+df.cut3[df.cut3$creative_name == "Amnet_DTH_all_creatives", "creative_name"] = sample(amnet, nrow(df.cut3[df.cut3$creative_name == "Amnet_DTH_all_creatives", ]), replace = TRUE, prob = c(0.7, 0.3))
+
+
 df.cut3 = 
   df.cut3 %>%
-  mutate(channel = replace(channel, creative_name == "Amnet_DTH_all_creatives", "Social Media"),
+  mutate(channel = replace(channel, creative_name == "Amnet_DTH_all_creatives1", "Facebook"),
+         channel = replace(channel, creative_name == "Amnet_DTH_all_creatives2", "Instagram"),
          channel = replace(channel, creative_name == "Agora_doublebillboard", "Paid Search"),
          channel = replace(channel, creative_name == "Polsat_all_banners_CPC", "Online Video"),
          channel = replace(channel, creative_name == "WP_SG_doublebillboard", "Online Display"),
@@ -82,6 +87,7 @@ df.cut3 =
          channel = replace(channel, creative_name == "Polsat_welcome_screen", "Online Display"),
          channel = replace(channel, creative_name == "WP_sport,turystyka,film_doublebillboard", "Paid Search"),
          channel = replace(channel, creative_name == "Interia_rectangle", "Paid Search"))
+
 
 
 # Final Dataset ----
@@ -93,7 +99,6 @@ final_data =
 
 colnames(final_data) = c("cookie", "time", "interaction", "conversion", "conversion_value", "channel", "device_type", "country")
 
-
 # Save the file
 
 # Home laptop
@@ -101,5 +106,4 @@ write.csv2(final_data, file = "C:\\Users\\matcyt\\Desktop\\MarketingAttribution\
 
 # Work laptop
 write.csv2(final_data, file = "C:\\Users\\mateusz.cytrowski\\Desktop\\Github\\attribution_markov_dataset.csv")
-
 

@@ -6,7 +6,7 @@ library(lubridate)
 library(data.table)
 
 # Load the attribution dataset
-df.budget1 = fread("C:\\Users\\mateu\\Desktop\\MarketingAttribution\\attribution_markov_dataset.csv", dec = ",")
+df.budget1 = fread("C:\\Users\\matcyt\\Desktop\\MarketingAttribution\\attribution_markov_dataset.csv", dec = ",")
 
 # work laptop
 df.budget1 = fread("C:\\Users\\mateusz.cytrowski\\Desktop\\Github\\attribution_markov_dataset.csv", dec = ",")
@@ -14,8 +14,6 @@ df.budget1 = fread("C:\\Users\\mateusz.cytrowski\\Desktop\\Github\\attribution_m
 # Troubles with loading the file - decimals " , " 
 
 # Prep ----
-str(df.budget1)
-
 df.budget2 <- as.data.table(df.budget1[, -1])
 
 str(df.budget2)
