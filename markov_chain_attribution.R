@@ -72,4 +72,4 @@ campaign_attribution =
 names(campaign_attribution)[names(campaign_attribution) == "total_conversions"] = "markov_result"
 
 # Save the outputs
-write.csv2(campaign_attribution, "C:/Users/mateusz.cytrowski/Desktop/Github/campaign_attribution.rds")
+write.csv2(campaign_attribution, "C:/Users/mateusz.cytrowski/Desktop/Github/campaign_attribution.csv")
