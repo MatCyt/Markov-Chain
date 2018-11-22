@@ -9,6 +9,10 @@ pacman::p_load(data.table, dplyr, ChannelAttribution, ggplot2)
 campaign_data = fread("C:/Users/matcyt/Desktop/MarketingAttribution/attribution_markov_dataset.csv")
 campaign_budget_daily = fread("C:/Users/matcyt/Desktop/MarketingAttribution/attribution_budget_daily.csv", dec = ",")
 
+# work
+campaign_data = fread("C:/Users/mateusz.cytrowski/Desktop/Github/attribution_markov_dataset.csv")
+campaign_budget_daily = fread("C:/Users/mateusz.cytrowski/Desktop/Github/attribution_budget_daily.csv", dec = ",")
+
 ### Prepare the files - Split Paths ----
 df_split = campaign_data %>%
   group_by(cookie) %>%
@@ -67,4 +71,5 @@ campaign_attribution =
 # Change the name of markov results column
 names(campaign_attribution)[names(campaign_attribution) == "total_conversions"] = "markov_result"
 
-
+# Save the outputs
+write.csv2(campaign_attribution, "C:/Users/mateusz.cytrowski/Desktop/Github/campaign_attribution.rds")
