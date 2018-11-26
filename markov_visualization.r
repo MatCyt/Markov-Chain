@@ -4,7 +4,7 @@
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load(data.table,ggplot2,dplyr, visNetwork)
 
-campaign_attribution = fread("C:/Users/mateusz.cytrowski/Desktop/Github/campaign_attribution.rds", dec = ",", header = T)
+campaign_attribution = fread("C:/Users/mateusz.cytrowski/Desktop/Github/campaign_attribution.csv", dec = ",", header = T)
 str(campaign_attribution)
 
 ## Vis 1 - Campaign attribution - conversions ----
