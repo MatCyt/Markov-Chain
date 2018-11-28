@@ -5,6 +5,7 @@
 library(data.table)
 library(lubridate)
 library(dplyr)
+library(readr)
 
 # Read the dataset and delete some columns----
 
@@ -26,10 +27,10 @@ df.cut$cookie3 = substr(df.cut$cookie2, 4, 28)
 df.cut = df.cut[, -c("cookie", "cookie2")]
 
 # Country & Device
-country = "Germany"
+#country = "Germany"
 
-devices = c("PC", "Mobile", "Tablet", "SmartTV")
-device = sample(devices, 1000000, replace = TRUE, prob = c(0.35, 0.6, 0.04, 0.01))
+#devices = c("PC", "Mobile", "Tablet", "SmartTV")
+#device = sample(devices, 1000000, replace = TRUE, prob = c(0.35, 0.6, 0.04, 0.01))
 
 # Time
 df.cut2 = 
@@ -94,15 +95,14 @@ df.cut3 =
 
 final_data = 
   df.cut3 %>%
-  select(cookie3, time2, new_event, new_conversion, conversion_value, channel) %>%
-  mutate(device_type = device, country = country)
+  select(cookie3, time2, new_event, new_conversion, conversion_value, channel)
 
-colnames(final_data) = c("cookie", "time", "interaction", "conversion", "conversion_value", "channel", "device_type", "country")
+colnames(final_data) = c("cookie", "time", "interaction", "conversion", "conversion_value", "channel")
 
 # Save the file
 
 # Home laptop
-write.csv2(final_data, file = "C:\\Users\\matcyt\\Desktop\\MarketingAttribution\\attribution_markov_dataset.csv")
+write_csv(final_data, path = "C:\\Users\\matcyt\\Desktop\\MarketingAttribution\\attribution_markov_dataset.csv")
 
 # Work laptop
 write.csv2(final_data, file = "C:\\Users\\mateusz.cytrowski\\Desktop\\Github\\attribution_markov_dataset.csv")

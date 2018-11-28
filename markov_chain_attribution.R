@@ -7,7 +7,7 @@ pacman::p_load(data.table, dplyr, ChannelAttribution, ggplot2, readr)
 
 ### Load Datasets ----
 campaign_data = fread("C:/Users/matcyt/Desktop/MarketingAttribution/attribution_markov_dataset.csv")
-campaign_budget_daily = fread("C:/Users/matcyt/Desktop/MarketingAttribution/attribution_budget_daily.csv", dec = ",")
+campaign_budget_daily = fread("C:/Users/matcyt/Desktop/MarketingAttribution/attribution_budget_daily.csv")
 
 # work
 campaign_data = fread("C:/Users/mateusz.cytrowski/Desktop/Github/attribution_markov_dataset.csv")
@@ -63,13 +63,14 @@ campaign_budget_total = as.data.table(
 campaign_attribution = merge(all_model_results, campaign_budget_total, 
                              by.x = "channel_name", by.y = "channel")
 
-#### Calculate ROAS
+#### Calculate ROAS and CPA
 campaign_attribution = 
   campaign_attribution %>%
   mutate(chanel_weight = (total_conversions / sum(total_conversions)),
          cost_weight = (total_cost / sum(total_cost)),
          roas = chanel_weight / cost_weight,
-         optimal_budget = total_cost * roas)
+         optimal_budget = total_cost * roas,
+         CPA = total_cost / total_conversions)
 
 # Change the name of markov results column
 names(campaign_attribution)[names(campaign_attribution) == "total_conversions"] = "markov_result"
