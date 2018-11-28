@@ -36,6 +36,7 @@ markov_attribution <- markov_model(df_paths,
                              var_path = "path",
                              var_conv = "total_conversions",
                              var_value = NULL,
+                             order = 2, # higher order markov chain
                              var_null = NULL,
                              out_more = TRUE)
 
