@@ -4,10 +4,11 @@
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load(data.table,ggplot2,dplyr, visNetwork)
 
-campaign_attribution = fread("C:/Users/mateusz.cytrowski/Desktop/Github/campaign_attribution.csv", dec = ",", header = T)
+campaign_attribution = fread("C:\\Users\\matcyt\\Desktop\\Markov-Chain\\campaign_attribution.csv")
 str(campaign_attribution)
 
 ## Vis 1 - Campaign attribution - conversions ----
+
 
 # Re-order the factors for channel names - for proper order of the bars
 df_g1 = campaign_attribution[order(-campaign_attribution$markov_result), ]
@@ -27,9 +28,7 @@ g_channel_performance <- ggplot(df_g1, aes(x = channel_name, y = markov_result, 
   ggtitle("Channel Performance") +
   guides(fill=FALSE)
 
-
 g_channel_performance
-
 
 
 ## Vis 2 - Visualize optimal budget allocation - ROAS based ----
@@ -58,6 +57,7 @@ g_budget_allocation
 
 ## Vis 3 - Compare Markov Chain attribution and heuristics models ----
 
+
 # Create df for comparing heuristic models and markov results
 df_g3 = campaign_attribution[, c("channel_name", "markov_result", "first_touch", "last_touch", "linear_touch")]
 df_g3 = melt(df_g3, id = "channel_name")
@@ -78,6 +78,7 @@ g_model_comparison <- ggplot(df_g3, aes(x = channel_name, y = value, fill = vari
   theme(plot.title = element_text(hjust = 0.5))
 
 g_model_comparison
+
 
 ## Vis 4 - Markov network graph ----
 

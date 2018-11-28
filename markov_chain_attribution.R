@@ -2,7 +2,7 @@
 ### Load Libraries ----
 
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load(data.table, dplyr, ChannelAttribution, ggplot2)
+pacman::p_load(data.table, dplyr, ChannelAttribution, ggplot2, readr)
 
 
 ### Load Datasets ----
@@ -28,7 +28,8 @@ df_paths = df_split %>%
   arrange(time) %>%
   summarise(path = paste(channel, collapse = ">"),
             total_conversions = sum(conversion)) %>%
-  ungroup()
+  ungroup() %>% 
+  mutate(null_conversion = ifelse(total_conversions == 1, 0, 1)) # adding information about path that have not led to conversion
 
 ### Markov Chain and Heuristic Models ----
 markov_attribution <- markov_model(df_paths,
@@ -42,6 +43,8 @@ markov_attribution <- markov_model(df_paths,
 heuristic_attribution <- heuristic_models(df_paths,
                                      var_path = "path",
                                      var_conv = "total_conversions")
+
+
 
 
 ### Prepare final joint dataset ----
@@ -72,4 +75,4 @@ campaign_attribution =
 names(campaign_attribution)[names(campaign_attribution) == "total_conversions"] = "markov_result"
 
 # Save the outputs
-write.csv2(campaign_attribution, "C:/Users/mateusz.cytrowski/Desktop/Github/campaign_attribution.csv")
+write_csv(campaign_attribution, "C:\\Users\\matcyt\\Desktop\\Markov-Chain\\campaign_attribution.csv")
