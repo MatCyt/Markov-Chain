@@ -1,14 +1,8 @@
-# Marketing-Attribution_Markov-Chain
-R based marketing attribution and basic budget optimization using Markov Chains
+# Datasets description
+1) Campaign dataset
 
-1) Marketing attribution
+2) Budget
+daily budget data
 
-2) Markov Chain - Introduction and Graphic
-
-3) Markov Chain attribution + graph
-
-4) Compare heuristics to markov + graph
-
-4) ROAS + graph
-
-5) Markov chain - materials
+3) Campaign attribution
+for the outcome visualization mainly
