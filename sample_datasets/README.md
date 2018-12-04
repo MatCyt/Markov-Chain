@@ -18,7 +18,8 @@ Cookie campaign data serves as log of each user(s) action and is creating a map 
 Real campaign data will have many more variables like geography location, campaign name or information about browser, creative, device type or system. While it can bring new dimensions to analytics of the campaign it is not necessary for markov chain attribution model.
 
 
-2) Budget
+### Budget
+
 Simulated daily cost values for whole campaign calculated as a function of number of impressions.
 
 
