@@ -1,14 +1,16 @@
 # Marketing-Attribution_Markov-Chain
 R based marketing attribution and basic budget optimization using Markov Chains
 
-1) Marketing attribution
+## Marketign Attribution
 
-2) Markov Chain - Introduction and Graphic
 
-3) Markov Chain attribution + graph
+## Markov Chain - Introduction (inc. graph)
 
-4) Compare heuristics to markov + graph
+## Markov Chain - Code process
 
-4) ROAS + graph
+## Markov Chain - Attribution Result and Heuristics comparisons
 
-5) Markov chain - materials
+## Markov Chain + ROAS + Graph
+
+## Markov Chain - Links and materials
+
