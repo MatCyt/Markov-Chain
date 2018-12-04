@@ -155,33 +155,23 @@ You may want try to validate the Markov results through accuracy measures based 
 As Sergey's mention in his post the unique channel paths are undervalued by default in current calculation method. You may want to double check this impact and calculate markov results separately for one and multi-channel path.
 
 ### Markov Chain - Links and materials
-Above all:
-Markov Chain pt1
-https://analyzecore.com/2016/08/03/attribution-model-r-part-1/
-Markov Chain pt2
-https://analyzecore.com/2017/05/31/marketing-multi-channel-attribution-model-r-part-2-practical-issues/
+Above all - if you should read only one thing it would be two posts from Analyze Core blog by Sergey Bryl
 
-Attribution Overview
-https://www.slideshare.net/MarketingFestival/lucie-sperkova-pioneering-multichannel-attribution-for-the-lack-of-comprehensive-solutions
+[Part 1 - Introduction to the topic in digital marketing context](https://analyzecore.com/2016/08/03/attribution-model-r-part-1/)
 
+[Part 2 - Great R implementation of Markov Chain](https://analyzecore.com/2017/05/31/marketing-multi-channel-attribution-model-r-part-2-practical-issues/)
 
-Heuristic models
-https://www.snapapp.com/blog/marketing-attribution-models/
-https://www.referralsaasquatch.com/marketing-attribution/
+*Additional Resources*
 
-Markov Chain general
-http://setosa.io/ev/markov-chains/
-https://towardsdatascience.com/introduction-to-markov-chains-50da3645a50d
+* [Heuristics Models Overview 1](https://www.snapapp.com/blog/marketing-attribution-models/)
+* [Heuristics Models Overview 2](https://www.referralsaasquatch.com/marketing-attribution/)
+* [Model Based Attribution - Overview](https://www.slideshare.net/MarketingFestival/lucie-sperkova-pioneering-multichannel-attribution-for-the-lack-of-comprehensive-solutions)
+* [Graphical introduction to Markov Chain](http://setosa.io/ev/markov-chains/)
+* [Markov Chains & Google Analytics Connection with R](https://stuifbergen.com/2016/11/conversion-attribution-markov-model-r/)
+* [Validating Markov Chains](https://amunategui.github.io/markov-chains/index.html)
 
-Code text 1
-Google Analytics Connection and R Implementation
-https://stuifbergen.com/2016/11/conversion-attribution-markov-model-r/
+*Whitepapers*
 
-Higher order Markov Chain for Web Users
-http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.232.5927&rep=rep1&type=pdf
+* [Mapping the Customer Journey: A Graph-Based Framework for Online Attribution Modeling](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2343077) - Great deeper overview of the topic
+* [Are Web Users Really Markovian?](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.232.5927&rep=rep1&type=pdf) - Higher order markov chains
 
-Validating Markov Results
-
-White papers
-White papers
-White papers
