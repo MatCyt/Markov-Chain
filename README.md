@@ -28,7 +28,9 @@ Following repository answers the attribution challenge using the popular Markov 
 
 Markov Chain essentially translate series of events into set of states (events itself) and transition probabilities between them (chance of moving from one event to another or staying in the current event).
 
-![markov_graph](https://github.com/MatCyt/Markov-Chain/blob/master/img/markov_graph.png "Markov Chain graph")
+<p align="center">
+  <img src="https://github.com/MatCyt/Markov-Chain/blob/master/img/markov_graph.png" alt="Markov Chain graph">
+ </p> 
 
 In our marketing attribution problem Markov Chain applies great to the concept of the customer journey. Each touchpoint (online ad, landing page etc.) represents the state with the conversion or no-conversion being the final outcome of the journey. Based on the cookie level data tracking the customer actions online we can calculate the transition probabilities between each touchpoint. Final outcome of this transition matrix can be represented as a markov graph.
 
@@ -66,10 +68,10 @@ df_paths = df_split %>%
   ```
   
 Then we can calculate the actuall Markov Chain results using [Channel Attribution](https://cran.r-project.org/web/packages/ChannelAttribution/ChannelAttribution.pdf) package available in R. There are several information that we need to indicate within a function.
-* var_path and var_conv specify the appropriate columns (path and binary conversion) from input dataframe
-* order indicates how many steps we want to take back in calculating the current transition probability. You can compare differences between different order results in markov_higher_order.R and read more in reference links. Web users are not consider purely markovian [1](https://dl.acm.org/citation.cfm?id=2187919) therefore an order of 2 or 3 is typically applied for symilar problems
-* var_null specifies the column containing binary values for paths that have not ended with conversion
-* out_more returns transition probabilities if set to TRUE.
+* *var_path* and var_conv specify the appropriate columns (path and binary conversion) from input dataframe
+* *order* indicates how many steps we want to take back in calculating the current transition probability. You can compare differences between different order results in markov_higher_order.R and read more in reference links. Web users are not consider purely markovian [1](https://dl.acm.org/citation.cfm?id=2187919) therefore an order of 2 or 3 is typically applied for symilar problems
+* *var_null* specifies the column containing binary values for paths that have not ended with conversion
+* *out_more* returns transition probabilities if set to TRUE.
 
 We can also calculate heuristics based results in order to compare them with Markov Chain attribution.
 
@@ -95,9 +97,14 @@ heuristic_attribution <- heuristic_models(df_paths,
 
 Following graphs show results of Markov model compared with heuristic models. All visualizations code can be found in results_visualization together with dataset necessary to run them.
 
-# Graph 1
 
-# Graph 2
+<p align="left">
+  <img src="https://github.com/MatCyt/Markov-Chain/blob/master/img/Channel%20Performance.png" alt="Channel Attribution"
+       width="425" height="330">
+  <img src="https://github.com/MatCyt/Markov-Chain/blob/master/img/Markov%20vs%20Heuristics.png" alt="Channel Comparison"
+       width="425" height="330">
+  </p> 
+
 
 ### Markov Chain and budget allocation
 
@@ -135,25 +142,45 @@ campaign_attribution =
 
 Graph below will show us the comparison of current versus recommended budget based on the markov-driven allocation
 
-# GRAPH - ROAS
-
-### Additional Code
+<p align="center">
+  <img src="https://github.com/MatCyt/Markov-Chain/blob/master/img/BudgetAllocation.png" alt="Budget Allocation"
+       width="480" height="370">
 
 ### Possible improvements
+
+Customer journey not ending with conversion can last for dozens of days (limited by cookie lifetime) and have many different touchpoint. We may want to decide to break it after X touchpoints or days following specific business logic. 
+
+You may want try to validate the Markov results through accuracy measures based on prediction results to compare it with other allocation measurement
+
+As Sergey's mention in his post the unique channel paths are undervalued by default in current calculation method. You may want to double check this impact and calculate markov results separately for one and multi-channel path.
 
 ### Markov Chain - Links and materials
 Above all:
 Markov Chain pt1
+https://analyzecore.com/2016/08/03/attribution-model-r-part-1/
 Markov Chain pt2
+https://analyzecore.com/2017/05/31/marketing-multi-channel-attribution-model-r-part-2-practical-issues/
 
-Attribution
+Attribution Overview
+https://www.slideshare.net/MarketingFestival/lucie-sperkova-pioneering-multichannel-attribution-for-the-lack-of-comprehensive-solutions
+
 
 Heuristic models
+https://www.snapapp.com/blog/marketing-attribution-models/
+https://www.referralsaasquatch.com/marketing-attribution/
 
 Markov Chain general
+http://setosa.io/ev/markov-chains/
+https://towardsdatascience.com/introduction-to-markov-chains-50da3645a50d
 
 Code text 1
-Google analytics
+Google Analytics Connection and R Implementation
+https://stuifbergen.com/2016/11/conversion-attribution-markov-model-r/
+
+Higher order Markov Chain for Web Users
+http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.232.5927&rep=rep1&type=pdf
+
+Validating Markov Results
 
 White papers
 White papers
