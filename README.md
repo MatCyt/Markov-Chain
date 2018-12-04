@@ -28,9 +28,7 @@ Following repository answers the attribution challenge using the popular Markov 
 
 Markov Chain essentially translate series of events into set of states (events itself) and transition probabilities between them (chance of moving from one event to another or staying in the current event).
 
-https://medium.com/grand-parade/implementing-markov-chain-in-swift-theory-33838ec62c6f
-
-![markov_graph](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![markov_graph](https://github.com/MatCyt/Markov-Chain/blob/master/img/markov_graph.png "Markov Chain graph")
 
 In our marketing attribution problem Markov Chain applies great to the concept of the customer journey. Each touchpoint (online ad, landing page etc.) represents the state with the conversion or no-conversion being the final outcome of the journey. Based on the cookie level data tracking the customer actions online we can calculate the transition probabilities between each touchpoint. Final outcome of this transition matrix can be represented as a markov graph.
 
