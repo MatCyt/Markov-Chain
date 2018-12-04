@@ -8,11 +8,11 @@ pacman::p_load(data.table, dplyr, ChannelAttribution, ggplot2, readr)
 
 ### Load Datasets ----
 
-campaign_data = fread("C:/Users/matcyt/Desktop/MarketingAttribution_Datasets/attribution_markov_dataset.csv")
+campaign_data = fread("C:/Users/matcyt/Desktop/MarketingAttribution_Datasets/campaign_data.csv")
 campaign_budget_daily = fread("C:/Users/matcyt/Desktop/MarketingAttribution_Datasets/attribution_budget_daily.csv")
 
 # work
-campaign_data = fread("C:/Users/mateusz.cytrowski/Desktop/Github/attribution_markov_dataset.csv")
+campaign_data = fread("C:/Users/mateusz.cytrowski/Desktop/Github/campaign_data.csv")
 campaign_budget_daily = fread("C:/Users/mateusz.cytrowski/Desktop/Github/attribution_budget_daily.csv", dec = ",")
 
 ### Prepare the files - Split Paths ----
@@ -39,7 +39,7 @@ markov_attribution <- markov_model(df_paths,
                              var_conv = "total_conversions",
                              var_value = NULL,
                              order = 2, # higher order markov chain
-                             var_null = null_conversion,
+                             var_null = "null_conversion",
                              out_more = TRUE)
 
 
