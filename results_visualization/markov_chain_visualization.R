@@ -18,9 +18,13 @@ df_g1$channel_name = factor(df_g1$channel_name, levels = c("Facebook", "Instagra
 g_channel_performance <- ggplot(df_g1, aes(x = channel_name, y = markov_result, fill = channel_name)) + 
   geom_bar(stat = "identity", width = 0.6) +
   ylim(0, 7000) +
-  scale_fill_brewer(palette = "OrRd", direction = -1) +
+  scale_fill_manual(values = c("#CE2D4F",
+                               "#A14DA0",
+                               "#9D79BC",
+                               "#7F96FF",
+                               "#A9CEF4")) +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 30, hjust = 0.6)) +
+  theme(axis.text.x = element_text(size = 9, angle = 30, hjust = 0.6, face = "bold")) +
   theme(panel.grid.major.x = element_blank()) +
   theme(plot.title = element_text(hjust = 0.5)) +
   geom_text(aes(label = round(markov_result, 0)), fontface = "bold", size = 4, vjust = -1) + 
@@ -29,7 +33,6 @@ g_channel_performance <- ggplot(df_g1, aes(x = channel_name, y = markov_result, 
   guides(fill=FALSE)
 
 g_channel_performance
-
 
 ## Vis 2 - Visualize optimal budget allocation - ROAS based ----
 # Compare current budget allocation with the one suggested by Markov attribution
@@ -41,9 +44,9 @@ df_g2 = melt(df_g2, id = "channel_name")
 # Create double bar chart
 g_budget_allocation <- ggplot(df_g2, aes(x = channel_name, y = value, fill = variable)) + 
   geom_bar(stat = "identity", width = 0.6, position = position_dodge(width = 0.7)) +
-  scale_fill_manual(labels = c("Current Budget", "Optimal Budget"), values = c("tomato3", "green4")) +
+  scale_fill_manual(labels = c("Current Budget", "Optimal Budget"), values = c("#FFD166", "#04A777")) +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 30, hjust = 0.6)) +
+  theme(axis.text.x = element_text(size = 10, angle = 30, hjust = 0.6, face = "bold")) +
   theme(panel.grid.major.x = element_blank()) +
   geom_text(aes(label = round(value, 0)), 
             fontface = "bold", size = 3.5, 
@@ -67,10 +70,10 @@ g_model_comparison <- ggplot(df_g3, aes(x = channel_name, y = value, fill = vari
   scale_fill_manual(labels = c("Markov Model", "First Touch", "Last Touch", "Linear"), 
                     values = c("#e65368",
                                "#4e74ff",
-                               "#75d3fa",
-                               "#5feac4")) +
+                               "#87BFFF",
+                               "#3BCEAC")) +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 30, hjust = 0.6)) +
+  theme(axis.text.x = element_text(size = 9, angle = 30, hjust = 0.6, face = "bold")) +
   theme(panel.grid.major.x = element_blank()) +
   labs(x = "", y = "Budget $") +
   ggtitle("Markov vs Heuristics") +

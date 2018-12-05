@@ -8,12 +8,8 @@ pacman::p_load(data.table, dplyr, ChannelAttribution, ggplot2, readr)
 
 ### Load Datasets ----
 
-campaign_data = fread("C:/Users/matcyt/Desktop/MarketingAttribution_Datasets/campaign_data.csv")
-campaign_budget_daily = fread("C:/Users/matcyt/Desktop/MarketingAttribution_Datasets/attribution_budget_daily.csv")
-
-# work
-campaign_data = fread("C:/Users/mateusz.cytrowski/Desktop/Github/campaign_data.csv")
-campaign_budget_daily = fread("C:/Users/mateusz.cytrowski/Desktop/Github/attribution_budget_daily.csv", dec = ",")
+campaign_data = fread(".../campaign_data.csv")
+campaign_budget_daily = fread(".../attribution_budget_daily.csv")
 
 ### Prepare the files - Split Paths ----
 df_split = campaign_data %>%
@@ -49,7 +45,6 @@ heuristic_attribution <- heuristic_models(df_paths,
 
 
 
-
 ### Prepare final joint dataset ----
 
 # Join attribution results
@@ -79,7 +74,7 @@ campaign_attribution =
 names(campaign_attribution)[names(campaign_attribution) == "total_conversions"] = "markov_result"
 
 # Save the outputs
-write_csv(campaign_attribution, "C:\\Users\\matcyt\\Desktop\\Markov-Chain\\campaign_attribution.csv")
+write_csv(campaign_attribution, ".../campaign_attribution.csv")
 =======
 
 ### Load Libraries ----
