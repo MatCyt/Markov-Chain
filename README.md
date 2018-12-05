@@ -11,7 +11,10 @@ Marketing attribution is trying to answer one of the key questions in marketing 
 
 Original, popular approach tries to solve this problem with set of heuristics answers: attributing all the conversions to the last or first touchpoint (last-touch or first-touch), spreading the glory equally among channels (linear attribution) or giving more credit to the recent one (time decay attribution). Below you can find a short visual summary together with a link in the last section discussing them in detail.
 
-# PICTURE - slide
+<p align="center">
+  <img src="https://github.com/MatCyt/Markov-Chain/blob/master/img/AttributionApproach.PNG" alt="Attribution Models"
+       width="600" height="270">
+ </p>
 
 While all of them are relatively easy to understand and implement and above all better than nothing they are also too simple to be true. Attribution problem can however be answered with more accurate data-driven models including:
 
@@ -34,7 +37,10 @@ Markov Chain essentially translate series of events into set of states (events i
 
 In our marketing attribution problem Markov Chain applies great to the concept of the customer journey. Each touchpoint (online ad, landing page etc.) represents the state with the conversion or no-conversion being the final outcome of the journey. Based on the cookie level data tracking the customer actions online we can calculate the transition probabilities between each touchpoint. Final outcome of this transition matrix can be represented as a markov graph.
 
-# Picture - slide 
+<p align="center">
+  <img src="https://github.com/MatCyt/Markov-Chain/blob/master/img/MarkovChain.PNG" alt="Campaign Graph"
+       width="450" height="300">
+ </p>
 
 Attribution itself is calculated within Markov Chain by removal effect. [Explaining it simply](https://www.analyticsvidhya.com/blog/2018/01/channel-attribution-modeling-using-markov-chains-in-r/):
 
@@ -161,17 +167,23 @@ Above all - if you should read only one thing it would be two posts from Analyze
 
 [Part 2 - Great R implementation of Markov Chain](https://analyzecore.com/2017/05/31/marketing-multi-channel-attribution-model-r-part-2-practical-issues/)
 
+*R Libraries that can be applier to this problem*
+* [ChannelAttribution](https://cran.r-project.org/web/packages/ChannelAttribution/ChannelAttribution.pdf)
+* [markovchain](https://cran.r-project.org/web/packages/markovchain/index.html)
+* [clickstream](https://cran.r-project.org/web/packages/clickstream/clickstream.pdf)
+
 *Additional Resources*
 
-* [Heuristics Models Overview 1](https://www.snapapp.com/blog/marketing-attribution-models/)
-* [Heuristics Models Overview 2](https://www.referralsaasquatch.com/marketing-attribution/)
-* [Model Based Attribution - Overview](https://www.slideshare.net/MarketingFestival/lucie-sperkova-pioneering-multichannel-attribution-for-the-lack-of-comprehensive-solutions)
-* [Graphical introduction to Markov Chain](http://setosa.io/ev/markov-chains/)
-* [Markov Chains & Google Analytics Connection with R](https://stuifbergen.com/2016/11/conversion-attribution-markov-model-r/)
-* [Validating Markov Chains](https://amunategui.github.io/markov-chains/index.html)
+1) [Heuristics Models Overview 1](https://www.snapapp.com/blog/marketing-attribution-models/)
+2) [Heuristics Models Overview 2](https://www.referralsaasquatch.com/marketing-attribution/)
+3) [Model Based Attribution - Overview](https://www.slideshare.net/MarketingFestival/lucie-sperkova-pioneering-multichannel-attribution-for-the-lack-of-comprehensive-solutions)
+4) [Graphical introduction to Markov Chain](http://setosa.io/ev/markov-chains/)
+5) [Markov Chains & Google Analytics Connection with R](https://stuifbergen.com/2016/11/conversion-attribution-markov-model-r/)
+6) [Validating Markov Chains](https://amunategui.github.io/markov-chains/index.html)
 
 *Whitepapers*
 
-* [Mapping the Customer Journey: A Graph-Based Framework for Online Attribution Modeling](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2343077) - Great deeper overview of the topic
-* [Are Web Users Really Markovian?](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.232.5927&rep=rep1&type=pdf) - Higher order markov chains
+1) [Mapping the Customer Journey: A Graph-Based Framework for Online Attribution Modeling](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2343077) 
+2) [Are Web Users Really Markovian?](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.232.5927&rep=rep1&type=pdf)
+3) [Modeling Online Browsing and Path Analysis Using Clickstream Data](https://www.andrew.cmu.edu/user/alm3/papers/purchase%20conversion.pdf)
 
