@@ -7,7 +7,7 @@ pacman::p_load(data.table, dplyr, ChannelAttribution, ggplot2, readr)
 ### Load Datasets ----
 
 campaign_data = fread(".../campaign_data.csv")
-campaign_budget_daily = fread(".../attribution_budget_daily.csv")
+campaign_budget_daily = fread(".../budget_sample_daily.csv")
 
 ### Prepare the files - Split Paths ----
 df_split = campaign_data %>%
