@@ -17,7 +17,7 @@ df_g1$channel_name = factor(df_g1$channel_name, levels = c("Facebook", "Instagra
 # Create an ordered graph showing conversions attributed to each channel
 g_channel_performance <- ggplot(df_g1, aes(x = channel_name, y = markov_result, fill = channel_name)) + 
   geom_bar(stat = "identity", width = 0.6) +
-  ylim(0, 10000) +
+  ylim(0, 7000) +
   scale_fill_brewer(palette = "OrRd", direction = -1) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 30, hjust = 0.6)) +
@@ -41,7 +41,6 @@ df_g2 = melt(df_g2, id = "channel_name")
 # Create double bar chart
 g_budget_allocation <- ggplot(df_g2, aes(x = channel_name, y = value, fill = variable)) + 
   geom_bar(stat = "identity", width = 0.6, position = position_dodge(width = 0.7)) +
-  ylim(0,320) +
   scale_fill_manual(labels = c("Current Budget", "Optimal Budget"), values = c("tomato3", "green4")) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 30, hjust = 0.6)) +
@@ -74,7 +73,7 @@ g_model_comparison <- ggplot(df_g3, aes(x = channel_name, y = value, fill = vari
   theme(axis.text.x = element_text(angle = 30, hjust = 0.6)) +
   theme(panel.grid.major.x = element_blank()) +
   labs(x = "", y = "Budget $") +
-  ggtitle("Budget Allocation") +
+  ggtitle("Markov vs Heuristics") +
   theme(plot.title = element_text(hjust = 0.5))
 
 g_model_comparison
