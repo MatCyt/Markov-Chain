@@ -105,7 +105,7 @@ Following graphs show results of Markov model compared with heuristic models. Al
 
 
 <p align="left">
-  <img src="https://github.com/MatCyt/Markov-Chain/blob/master/img/Channel%20Performance.png" alt="Channel Attribution"
+  <img src="https://github.com/MatCyt/Markov-Chain/blob/master/img/ChannelPerformance2.png" alt="Channel Attribution"
        width="425" height="330">
   <img src="https://github.com/MatCyt/Markov-Chain/blob/master/img/Markov%20vs%20Heuristics.png" alt="Channel Comparison"
        width="425" height="330">
