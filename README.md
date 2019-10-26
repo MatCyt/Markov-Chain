@@ -3,6 +3,8 @@ R based marketing attribution and campaign budget optimization using Markov Chai
 
 All of the concepts described shortly below have a corresponding links in the reference section. You can find there all articles and papers that I think are doing particularly great job in introducing and explaining this topic.
 
+#### If you are looking for attribution method that does not require customer paths - check out my other repository about relative weight analytis | https://github.com/MatCyt/relative-weight-analysis
+
 ### Marketing Attribution
 
 Marketing attribution is trying to answer one of the key questions in advertisement world: how precisely my campaigns and actions contributed to the results I see? In more [formal definition](https://en.wikipedia.org/wiki/Attribution_(marketing)):
